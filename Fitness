@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Discipline Fit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#F3F5EE;--card:#FFFFFF;--ink:#0C1B2A;--mut:#5F6E7C;--ac:#1F5BFF;--acs:#E3EBFF;--am:#FFB400;--ok:#0E9F6E;--line:#DCE2D6;--hero:#0C1B2A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1220;--card:#121C30;--ink:#EAF0FF;--mut:#93A1B8;--ac:#6C93FF;--acs:#1F2E55;--ok:#34D399;--line:#243250;--hero:#1B2A4A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1220;--card:#121C30;--ink:#EAF0FF;--mut:#93A1B8;--ac:#6C93FF;--acs:#1F2E55;--ok:#34D399;--line:#243250;--hero:#1B2A4A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 Manrope,system-ui,sans-serif}
+main{max-width:480px;margin:0 auto;padding:18px 14px 120px}
+h1,h2,.d{font-family:Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.02em;margin:0}
+h1{font-size:26px;font-weight:800}
+h2{font-size:15px;font-weight:500;margin-bottom:12px}
+.sub{color:var(--mut);margin:4px 0 16px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;margin-bottom:12px}
+.hero{background:var(--hero);color:#fff;border:0;display:flex;align-items:center;gap:16px}
+.hero .mut{color:#B8C4D6}
+.ring{position:relative;width:124px;height:124px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring .n{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font:800 26px Unbounded,sans-serif}
+.ring .n small{display:block;font:600 11px Manrope;color:#B8C4D6}
+.big{font:800 32px/1 Unbounded,sans-serif}
+.mut{color:var(--mut);font-size:13px}
+.row{display:flex;align-items:center;gap:10px;padding:11px 12px;margin-bottom:8px;border-radius:16px;background:var(--bg)}
+.row .t{flex:1;min-width:0}
+.row .t b{font-weight:600;display:block;overflow-wrap:anywhere}
+.chk{width:32px;height:32px;border-radius:10px;border:2px solid var(--mut);background:transparent;color:#fff;font-size:17px;flex:none;cursor:pointer}
+.chk.on{background:var(--ok);border-color:var(--ok)}
+.cnt{display:flex;align-items:center;gap:6px}
+.cnt button{width:32px;height:32px;border-radius:10px;border:0;background:var(--acs);color:var(--ink);font-size:18px;cursor:pointer}
+.cnt span{min-width:42px;text-align:center;font-weight:800;font-size:14px}
+.x{background:none;border:0;color:var(--mut);font-size:20px;padding:2px 6px;cursor:pointer}
+input,select{width:100%;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;margin-bottom:8px}
+label{display:block;font-size:12px;color:var(--mut);margin:0 0 3px 4px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.btn{width:100%;padding:14px;border-radius:14px;border:0;background:var(--ac);color:#fff;font:800 15px Manrope,sans-serif;cursor:pointer}
+.btn.alt{background:var(--acs);color:var(--ink)}
+.btn.am{background:var(--am);color:#0C1B2A}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+nav div{pointer-events:auto;display:flex;width:100%;max-width:456px;gap:2px;background:var(--hero);padding:6px;border-radius:22px}
+nav button{flex:1;border:0;background:none;color:#B8C4D6;padding:7px 0;border-radius:16px;font:600 11px Manrope,sans-serif;cursor:pointer}
+nav button span{display:block;font-size:19px}
+nav button.on{background:var(--ac);color:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:7px 12px;font:600 13px Manrope,sans-serif;cursor:pointer}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px}
+.bars div{flex:1;text-align:center;font-size:11px;color:var(--mut);display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.bars i{display:block;border-radius:8px 8px 3px 3px;background:var(--ac);min-height:4px;margin-bottom:4px}
+.bars i.low{background:var(--line)}
+.pb{height:10px;border-radius:6px;background:var(--line);overflow:hidden;margin:10px 0 6px}
+.pb i{display:block;height:100%;background:var(--am);border-radius:6px}
+.empty{color:var(--mut);padding:6px 0}
+.meal{padding:12px 0;border-top:1px solid var(--line)}
+.meal:first-of-type{border-top:0}
+.meal b{display:flex;justify-content:space-between;gap:8px}
+.macro{text-align:center;background:var(--bg);border-radius:16px;padding:12px 4px}
+.macro .big{font-size:20px}
+.note{font-size:12px;color:var(--mut);margin-top:8px}
+.scroll{overflow-x:auto}
+canvas#cv{width:100%;height:260px;display:block;border-radius:18px;background:var(--bg);touch-action:pan-y;cursor:grab;margin-bottom:6px}
+input.pin{width:78px;margin:0;padding:8px;flex:none}
+@media (prefers-reduced-motion:no-preference){.ring circle.v,.pb i{transition:all .5s ease}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<nav><div id="tabs"></div></nav>
+<script>
+var KEY='discipline-fit-v1',TH=0.8;
+var DEF={habits:[{id:'h1',name:'Workout',t:1},{id:'h2',name:'Drink water (glasses)',t:8},{id:'h3',name:'Wake up on time',t:1},{id:'h4',name:'No junk food',t:1},{id:'h5',name:'Read 20 minutes',t:1},{id:'h6',name:'Sleep before 11 pm',t:1}],logs:{},workouts:[],weights:[],goal:null};
+var S=null;
+try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!S||!S.habits)S=JSON.parse(JSON.stringify(DEF));
+S.prof=S.prof||{age:'',h:'',w:'',sex:'m',act:1.375,goal:'lose',diet:'veg'};S.steps=S.steps||{};S.stepGoal=S.stepGoal||8000;S.bought=S.bought||{};S.store=S.store||'flipkart';
+var tab='today',cat='Chest',sel='',msg='',sensor={on:false,g:9.8,last:0,pend:0};
+var EX={Chest:['Push-ups','Bench press','Incline dumbbell press','Chest dips','Cable fly'],Back:['Pull-ups','Bent-over row','Lat pulldown','Deadlift','Seated cable row'],Legs:['Squats','Lunges','Leg press','Romanian deadlift','Calf raises','Glute bridge'],Shoulders:['Overhead press','Lateral raises','Face pulls','Arnold press'],Arms:['Bicep curls','Hammer curls','Tricep dips','Skull crushers'],Core:['Plank','Crunches','Leg raises','Russian twists','Mountain climbers'],Cardio:['Running','Cycling','Jump rope','Burpees','Brisk walk','HIIT intervals'],Mobility:['Sun salutation','Cat-cow','Child’s pose','Hip flexor stretch']};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function dk(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function ago(n){var d=new Date();d.setDate(d.getDate()-n);return d}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function $v(id){return document.getElementById(id).value}
+function val(k,id){return((S.logs[k]||{})[id])||0}
+function score(k){var h=S.habits;if(!h.length)return 0;var n=0;h.forEach(function(x){if(val(k,x.id)>=x.t)n++});return n/h.length}
+function streak(){var i=score(dk(ago(0)))>=TH?0:1,c=0;while(i<400&&score(dk(ago(i)))>=TH){c++;i++}return c}
+function best(){var b=0,c=0;for(var i=365;i>=0;i--){if(score(dk(ago(i)))>=TH){c++;if(c>b)b=c}else c=0}return b}
+function steps(k){return S.steps[k]||0}
+function bars(fn,max,top){var h='<div class="bars">';for(var i=6;i>=0;i--){var d=ago(i),v=fn(dk(d)),ok=v>=max;h+='<div><i class="'+(ok?'':'low')+'" style="height:'+Math.max(4,Math.min(1,v/max)*88)+'px"></i>'+['S','M','T','W','T','F','S'][d.getDay()]+'</div>'}return h+'</div>'}
+function ring(p){var c=2*Math.PI*50;return '<div class="ring"><svg width="124" height="124" viewBox="0 0 124 124"><circle cx="62" cy="62" r="50" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="12"/><circle class="v" cx="62" cy="62" r="50" fill="none" stroke="#FFB400" stroke-width="12" stroke-linecap="round" stroke-dasharray="'+c+'" stroke-dashoffset="'+(c*(1-p))+'"/></svg><div class="n">'+Math.round(p*100)+'%<small>habits</small></div></div>'}
+function stepBox(){var k=dk(new Date()),s=steps(k);return '<div class="card"><h2>Steps</h2><div class="big"><span id="stc">'+s.toLocaleString()+'</span> <span class="mut">/ '+S.stepGoal.toLocaleString()+'</span></div><div class="pb"><i id="stb" style="width:'+Math.min(100,s/S.stepGoal*100)+'%"></i></div></div>'}
+function vToday(){
+var k=dk(new Date()),p=score(k),st=streak();
+var m=p>=TH?'Done for today. Keep the chain going.':(p>0?'Finish strong. Every habit counts.':'Start with one habit. Momentum follows.');
+var h='<h1>Today</h1><p class="sub">'+new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})+'</p>';
+h+='<div class="card hero">'+ring(p)+'<div><div class="big">'+st+'</div><div class="mut">day streak</div><p class="mut" style="margin:10px 0 0">'+m+'</p></div></div>'+stepBox();
+h+='<div class="card"><h2>Daily habits</h2>';
+if(!S.habits.length)h+='<div class="empty">No habits yet. Add one below.</div>';
+S.habits.forEach(function(x){var v=val(k,x.id);
+h+='<div class="row"><div class="t"><b>'+esc(x.name)+'</b></div>';
+if(x.t>1)h+='<div class="cnt"><button data-a="dec" data-id="'+x.id+'" aria-label="Decrease">−</button><span>'+v+'/'+x.t+'</span><button data-a="inc" data-id="'+x.id+'" aria-label="Increase">+</button></div>';
+else h+='<button class="chk'+(v>=1?' on':'')+'" data-a="tog" data-id="'+x.id+'" aria-label="Mark done">'+(v>=1?'✓':'')+'</button>';
+h+='<button class="x" data-a="delh" data-id="'+x.id+'" aria-label="Remove habit">×</button></div>'});
+return h+'</div><div class="card"><h2>Add a habit</h2><input id="hn" placeholder="e.g. Cold shower" maxlength="40"><label for="ht">Times per day (1 = simple check)</label><input id="ht" type="number" min="1" max="99" value="1"><button class="btn" data-a="addh">Add habit</button></div>'}
+function vTrain(){
+var wk=dk(ago(6)),mins=S.workouts.filter(function(w){return w.date>=wk}).reduce(function(a,w){return a+(w.min||0)},0);
+var h='<h1>Train</h1><p class="sub">'+S.workouts.filter(function(w){return w.date>=wk}).length+' workouts · '+mins+' min this week</p>'+planCard()+'<div class="card"><h2>Pick an exercise</h2><div class="chips">'+Object.keys(EX).map(function(c){return '<button class="chip'+(c===cat?' on':'')+'" data-a="cat" data-id="'+c+'">'+c+'</button>'}).join('')+'</div><div class="chips">'+EX[cat].map(function(e){return '<button class="chip'+(e===sel?' on':'')+'" data-a="pick" data-id="'+esc(e)+'">'+e+'</button>'}).join('')+'</div>';
+h+=demoBox();h+='<label for="wn">Exercise name</label><input id="wn" value="'+esc(sel)+'" placeholder="Tap one above or type your own" maxlength="40"><div class="g3"><div><label for="ws">Sets</label><input id="ws" type="number" min="1" placeholder="3"></div><div><label for="wr">Reps</label><input id="wr" type="number" min="1" placeholder="12"></div><div><label for="wm">Minutes</label><input id="wm" type="number" min="1" placeholder="20"></div></div><button class="btn" data-a="addw">Log exercise</button></div><div class="card"><h2>Recent exercises</h2>';
+var l=S.workouts.slice().sort(function(a,b){return b.date<a.date?-1:b.date>a.date?1:b.id-a.id}).slice(0,15);
+if(!l.length)h+='<div class="empty">Nothing logged yet. Your first set goes here.</div>';
+l.forEach(function(w){var d=[];if(w.sets&&w.reps)d.push(w.sets+' × '+w.reps);if(w.min)d.push(w.min+' min');h+='<div class="row"><div class="t"><b>'+esc(w.name||w.type)+'</b><span class="mut">'+esc(w.type)+(d.length?' · '+d.join(' · '):'')+' · '+w.date+'</span></div><button class="x" data-a="delw" data-id="'+w.id+'" aria-label="Delete">×</button></div>'});
+return h+'</div>'}
+function vSteps(){
+var k=dk(new Date()),s=steps(k),hc=parseFloat(S.prof.h),str=(hc?hc*0.415:76)/100,km=(s*str/1000).toFixed(2),kc=Math.round(s*0.04);
+var h='<h1>Steps</h1><p class="sub">Walk more. It adds up.</p><div class="card hero" style="display:block"><div class="mut">Today</div><div class="big" style="font-size:44px;margin:6px 0"><span id="stc">'+s.toLocaleString()+'</span></div><div class="pb"><i id="stb" style="width:'+Math.min(100,s/S.stepGoal*100)+'%"></i></div><div class="mut">Goal '+S.stepGoal.toLocaleString()+' steps · '+km+' km · ~'+kc+' kcal</div></div>';
+h+='<div class="card"><h2>Step counter</h2><button class="btn'+(sensor.on?' alt':'')+'" data-a="'+(sensor.on?'sstop':'sstart')+'">'+(sensor.on?'Stop counting':'Start counting')+'</button><p class="note">'+(msg||(sensor.on?'Counting. Keep this page open and your phone with you.':'Uses your phone’s motion sensor. It only counts while this page is open and the screen is on. Add steps by hand if it misses any.'))+'</p></div>';
+h+=mapCard();h+='<div class="card"><h2>Add steps by hand</h2><div class="g2"><input id="sa" type="number" min="1" placeholder="e.g. 2000"><button class="btn alt" data-a="sadd" style="margin-bottom:8px">Add</button></div><label for="sg">Daily step goal</label><div class="g2"><input id="sg" type="number" min="1000" step="500" value="'+S.stepGoal+'"><button class="btn alt" data-a="sgoal" style="margin-bottom:8px">Save goal</button></div></div>';
+return h+'<div class="card"><h2>Last 7 days</h2>'+bars(steps,S.stepGoal)+'<p class="mut">Blue bars reached the goal.</p></div>'}
+function plan(){
+var p=S.prof,a=parseFloat(p.age),h=parseFloat(p.h),w=parseFloat(p.w);if(!a||!h||!w)return null;
+var bmr=10*w+6.25*h-5*a+(p.sex==='m'?5:-161),tdee=bmr*p.act,adj={lose:-450,keep:0,gain:300}[p.goal];
+var kcal=Math.round(Math.max(p.sex==='m'?1500:1200,tdee+adj)),pr=Math.round(w*(p.goal==='keep'?1.6:1.9)),fat=Math.round(kcal*.25/9),carb=Math.round((kcal-pr*4-fat*9)/4);
+return{bmr:Math.round(bmr),tdee:Math.round(tdee),kcal:kcal,pr:pr,fat:fat,carb:carb,water:(w*.035).toFixed(1),bmi:(w/Math.pow(h/100,2)).toFixed(1)}}
+var MEALS={veg:[['Breakfast',.25,'Oats or poha with milk, a banana and a handful of nuts'],['Lunch',.3,'Rice or 2–3 rotis, dal or rajma, paneer or tofu, vegetables and curd'],['Snack',.15,'Sprouts or roasted chana with a fruit, or milk with a scoop of whey'],['Dinner',.3,'Rotis with paneer, soya or dal, plus a large salad']],non:[['Breakfast',.25,'2–3 eggs (boiled or omelette), whole-grain toast and a fruit'],['Lunch',.3,'Rice or 2–3 rotis, chicken or fish curry, vegetables and curd'],['Snack',.15,'Boiled eggs or Greek yogurt with a fruit and nuts'],['Dinner',.3,'Grilled chicken or fish with vegetables and 1–2 rotis or a small bowl of rice']]};
+var FOODS={veg:[['Breakfast',.25,[['Oats (dry)',380,40],['Milk',60,25],['Banana',90,20,120,'banana'],['Mixed nuts',600,15]]],['Lunch',.3,[['Cooked rice',130,30],['Cooked dal',105,20],['Paneer',265,25],['Curd',60,15],['Cooked vegetables',40,10]]],['Snack',.15,[['Sprouts (boiled)',100,40],['Fruit',60,30],['Roasted chana',370,30]]],['Dinner',.3,[['Roti',300,40,40,'roti'],['Paneer',265,30],['Cooked dal',105,25],['Salad',25,5]]]],non:[['Breakfast',.25,[['Whole eggs',143,45,50,'egg'],['Whole-grain bread',250,30,30,'slice'],['Fruit',60,15],['Mixed nuts',600,10]]],['Lunch',.3,[['Cooked rice',130,30],['Chicken breast, cooked',165,35],['Curd',60,15],['Cooked dal',105,10],['Cooked vegetables',40,10]]],['Snack',.15,[['Boiled eggs',143,40,50,'egg'],['Greek yogurt',90,30],['Fruit',60,20],['Mixed nuts',600,10]]],['Dinner',.3,[['Chicken or fish, cooked',150,40],['Roti',300,35,40,'roti'],['Cooked vegetables',40,10],['Curd',60,15]]]]};
+var raf=0,dragYaw=0,lastX=null;
+function P(o){var d={t:0,h:0,k:0,a:0,b:0,e:0,s:.1,w:0,r:0};for(var i in o)d[i]=o[i];d.H=o.H!==undefined?o.H:d.h;d.K=o.K!==undefined?o.K:d.k;d.A=o.A!==undefined?o.A:d.a;return d}
+var PU=P({t:66,h:-66});
+var TP={
+pushup:{c:'Hands under shoulders and body in one straight line. Lower your chest close to the floor, then press back up.',p:[PU,P({t:80,h:-80,a:-70,e:70,b:25})]},
+squat:{c:'Feet shoulder-width apart. Sit your hips back and down, keep your chest up, then stand tall.',p:[P({a:80,s:.15}),P({t:40,h:85,k:110,a:80,s:.18})]},
+lunge:{c:'Step forward and lower until both knees bend about 90 degrees. Push through the front heel to return.',p:[P({}),P({t:5,h:80,k:85,H:-35,K:90})]},
+hinge:{c:'Push your hips back with a flat back and soft knees. Lower the weight along your legs, then drive the hips forward.',p:[P({}),P({t:75,h:20,k:12})]},
+row:{c:'Hinge forward with a flat back. Pull your elbows back toward your hips and squeeze your shoulder blades.',p:[P({t:60,h:25,k:20}),P({t:60,h:25,k:20,a:-55,e:65,b:15})]},
+press:{c:'Start with the weight at shoulder height. Press straight up until your arms are straight, then lower with control.',p:[P({a:15,e:150,b:20}),P({a:170,b:12})]},
+lat:{c:'Keep a slight bend in your elbows. Raise your arms out to the sides to shoulder height, then lower slowly.',p:[P({e:8,b:5}),P({e:8,b:88})]},
+fly:{c:'Soft elbows. Open your arms wide, then bring your hands together in front of your chest in a hugging arc.',p:[P({a:90,e:5,b:15}),P({a:90,e:5,b:80})]},
+face:{c:'Pull the rope toward your face with your elbows high and wide. Squeeze your upper back, then return slowly.',p:[P({a:90,b:10}),P({a:90,e:100,b:75})]},
+curl:{c:'Elbows stay at your sides. Curl the weight up to your shoulders, then lower it slowly without swinging.',p:[P({}),P({e:140})]},
+triext:{c:'Keep your upper arms still next to your head. Straighten your elbows to lift the weight, then lower behind the head.',p:[P({a:170,e:-160,b:8}),P({a:170,b:8})]},
+dip:{bar:1.05,c:'Grip the bars or bench with straight arms. Lower until your elbows reach about 90 degrees, then press back up.',p:[P({t:8,h:10,k:35,a:-5,b:20}),P({t:20,h:10,k:50,a:-60,e:60,b:20})]},
+pullup:{bar:2.05,c:'Hang with straight arms. Pull your chest toward the bar by driving your elbows down, then lower with control.',p:[P({h:0,k:15,a:178,b:12}),P({t:5,k:20,a:20,e:150,b:12})]},
+plank:{c:'Elbows under shoulders. Hold your body in a straight line and squeeze your abs and glutes. Do not let your hips sag.',p:[P({t:70,h:-70,e:90}),P({t:73,h:-73,e:90})]},
+mtn:{T:.9,c:'Start in a high plank. Drive one knee toward your chest, then switch legs quickly while keeping your hips low.',p:[P({t:66,h:-66,H:60,K:110}),P({t:66,h:60,k:110,H:-66,K:0})]},
+crunch:{c:'Lie on your back with knees bent. Curl your shoulders off the floor using your abs, then lower slowly.',p:[P({t:-90,h:120,k:100,a:95}),P({t:-40,h:120,k:100,a:95})]},
+legraise:{c:'Lie flat with legs straight. Lift your legs to vertical, then lower them slowly without arching your back.',p:[P({t:-90,h:90,a:90}),P({t:-90,h:172,a:90})]},
+twist:{c:'Lean back with feet lifted. Rotate your torso to move your hands from one side to the other.',p:[P({t:-40,h:110,k:60,a:90,w:-.8}),P({t:-40,h:110,k:60,a:90,w:.8})]},
+bridge:{c:'Feet flat and knees bent. Squeeze your glutes to lift your hips until your body forms a straight line, then lower.',p:[P({t:-90,h:115,k:105,a:90}),P({t:-125,h:112,k:105,a:90})]},
+calf:{c:'Stand tall. Rise up onto your toes, pause at the top, then lower your heels slowly.',p:[P({}),P({r:.1})]},
+jump:{T:.7,c:'Stay light on the balls of your feet. Turn the rope with your wrists and make small, quick jumps.',p:[P({a:25,b:35,e:70}),P({a:25,b:35,e:70,r:.2,k:15,h:5})]},
+burpee:{T:1.8,c:'Squat and place your hands down, jump or step back to a plank, then return and stand or jump up.',p:[P({t:45,h:90,k:120,a:30}),PU]},
+run:{T:.9,c:'Stay tall and lean slightly forward. Swing your arms opposite to your legs and land softly under your hips.',p:[P({t:12,h:70,k:100,H:-25,K:15,a:-45,A:55,e:90}),P({t:12,h:-25,k:15,H:70,K:100,a:55,A:-45,e:90})]},
+walk:{T:1.4,c:'Walk tall with relaxed shoulders. S
